@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+message MessageTCP {
+    
+    int32 agent_id = 1;
+    bytes model = 2; // bytes
+    repeated float agent_input = 3;
+    repeated float env_state = 4;
+    double reward = 5;
+    bool done = 6;
+    string function_call = 7;
+    string debug_msg = 8;
+}
+
