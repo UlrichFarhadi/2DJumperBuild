@@ -16,14 +16,13 @@ buffer_socket_size = 10048
 
 host = '127.0.0.1'
 port = 1234
+Docker = False
 
 if len(sys.argv) > 1:
-    if sys.argv[1] == ("Docker" or "docker"):
-        print(sys.argv[1])
+    if sys.argv[1] == "Docker" or sys.argv[1] ==  "docker":
         Docker = True
         host = 'host.docker.internal'  #'127.0.0.1'
-    else:
-        Docker = False
+print(host)
 
 ClientSocket = socket.socket()
 print('Waiting for connection')
