@@ -119,7 +119,7 @@ def client_handler(connection):
                 message_obj.model = pickle.dumps(job[1])
                 data = message_obj.SerializeToString()
                 #print(len(data))
-                connection.send(bytes(data)) # Blocking here until data is sent
+                connection.sendall(bytes(data)) # Blocking here until data is sent
                 #print(this_id, " Test: Job sent to compute slave")
             except:
                 #print(this_id, " Error: Failed to send compute job")

@@ -61,7 +61,7 @@ while True:
         message_obj.agent_id = job_idx
         data = message_obj.SerializeToString()
         #sleep(5)
-        ClientSocket.send(bytes(data)) # Blocking here until data is sent
+        ClientSocket.sendall(bytes(data)) # Blocking here until data is sent
         #print("Test: Sending back reward")
     except:
         print("Test: Error: Something went wrong sending the reward back")
