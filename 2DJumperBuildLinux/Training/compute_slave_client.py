@@ -54,9 +54,7 @@ while True:
         print("Test: Error: Something went wrong receiving the job")
         break
     try:
-        print("t6")
         env.reset()
-        print("t7")
         cum_reward = Jumper2Denv.run_one_episode(env=env, model=model, behavior_name=behavior_name, timesteps_per_episode=timesteps_per_episode)
         print("Episode Reward: ", cum_reward)
         message_obj = MessageTCP_pb2.MessageTCP()
