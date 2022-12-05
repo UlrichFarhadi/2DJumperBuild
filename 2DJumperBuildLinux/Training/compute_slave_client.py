@@ -31,19 +31,22 @@ env_simulation_speed = 100.0 # env_simulation_speed determines the speed of the 
 env, behavior_name = Jumper2Denv.create_env(show_graphics=False, env_simulation_speed=env_simulation_speed)
 timesteps_per_episode = 1000 # Simulation runs in 50 fps, 1 frame = 1 timestep, so 1000 timesteps equals to 20 sec simulation
 
+def recvall():
+    data_str = b''
+    while True:
+        data_str += ClientSocket.recv(buffer_socket_size) # Blocking here until data is received
+        read_data = MessageTCP_pb2.MessageTCP()
+        try:
+            read_data.ParseFromString(data_str)
+            return read_data
+        except:
+            continue
+
 while True:
     job_idx = -1
     try:
-        print("t1")
-        data_recv = ClientSocket.recv(buffer_socket_size) # Blocking here until data is received
-        print("t2")
-        read_data = MessageTCP_pb2.MessageTCP()
-        print("t3")
-        print(len(data_recv))
-        read_data.ParseFromString(data_recv)
-        print("t4")
+        read_data = recvall()
         job_idx = read_data.agent_id
-        print("t5")
         model = pickle.loads(read_data.model)
         #print("Test: Data received from master")
     except Exception as e:
