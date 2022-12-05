@@ -34,17 +34,24 @@ timesteps_per_episode = 1000 # Simulation runs in 50 fps, 1 frame = 1 timestep, 
 while True:
     job_idx = -1
     try:
+        print("t1")
         data_recv = ClientSocket.recv(buffer_socket_size) # Blocking here until data is received
+        print("t2")
         read_data = MessageTCP_pb2.MessageTCP()
+        print("t3")
         read_data.ParseFromString(data_recv)
+        print("t4")
         job_idx = read_data.agent_id
+        print("t5")
         model = pickle.loads(read_data.model)
         #print("Test: Data received from master")
     except:
         print("Test: Error: Something went wrong receiving the job")
         break
     try:
+        print("t6")
         env.reset()
+        print("t7")
         cum_reward = Jumper2Denv.run_one_episode(env=env, model=model, behavior_name=behavior_name, timesteps_per_episode=timesteps_per_episode)
         print("Episode Reward: ", cum_reward)
         message_obj = MessageTCP_pb2.MessageTCP()
