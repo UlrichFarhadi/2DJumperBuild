@@ -39,6 +39,7 @@ while True:
         print("t2")
         read_data = MessageTCP_pb2.MessageTCP()
         print("t3")
+        print(data_recv)
         read_data.ParseFromString(data_recv)
         print("t4")
         job_idx = read_data.agent_id
