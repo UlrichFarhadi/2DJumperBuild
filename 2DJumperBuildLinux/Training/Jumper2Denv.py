@@ -20,7 +20,7 @@ from mlagents_envs.side_channel.engine_configuration_channel import EngineConfig
 
 def create_env(show_graphics=False, env_simulation_speed=1.0):
     channel = EngineConfigurationChannel()
-    env = UE(file_name='../2DJumperBuildLinux.x86_64', seed=1, side_channels=[channel], no_graphics=not show_graphics)
+    env = UE(file_name='2DJumperBuild/2DJumperBuildLinux/2DJumperBuildLinux.x86_64', seed=1, side_channels=[channel], no_graphics=not show_graphics)
     channel.set_configuration_parameters(time_scale = env_simulation_speed)
     print("Resetting environment")
     env.reset()
