@@ -8,6 +8,7 @@ import numpy as np
 import torch
 
 import GA_evolver
+import platform
 
 # Create an instance from the class GA_evolver
 from random import random
@@ -17,10 +18,17 @@ from mlagents_envs.environment import ActionTuple, BaseEnv
 from mlagents_envs.environment import UnityEnvironment as UE
 from mlagents_envs.side_channel.engine_configuration_channel import EngineConfigurationChannel
 
-
-def create_env(show_graphics=False, env_simulation_speed=1.0):
+def create_env(show_graphics=False, env_simulation_speed=1.0, docker = False):
+    env_path = ""
+    if (platform.system() == 'Linux'):
+        env_path = '../2DJumperBuild/2DJumperBuildLinux/2DJumperBuildLinux.x86_64'
+    elif (platform.system() == 'Windows'):
+        env_path = '../2DJumperBuild/2DJumperBuildWindows/3DJumper'
+    if docker:
+        env_path = '2DJumperBuild/2DJumperBuildLinux/2DJumperBuildLinux.x86_64'
+        
     channel = EngineConfigurationChannel()
-    env = UE(file_name='../envs/2DJumperBuildWindows/3DJumper', seed=1, side_channels=[channel], no_graphics=not show_graphics)
+    env = UE(file_name= env_path , seed=1, side_channels=[channel], no_graphics=not show_graphics)
     channel.set_configuration_parameters(time_scale = env_simulation_speed)
     print("Resetting environment")
     env.reset()
