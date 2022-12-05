@@ -19,6 +19,7 @@ port = 1234
 
 if len(sys.argv) > 1:
     if sys.argv[1] == ("Docker" or "docker"):
+        print(sys.argv[1])
         Docker = True
         host = 'host.docker.internal'  #'127.0.0.1'
     else:
