@@ -45,7 +45,8 @@ while True:
         print("t5")
         model = pickle.loads(read_data.model)
         #print("Test: Data received from master")
-    except:
+    except Exception as e:
+        print(e)
         print("Test: Error: Something went wrong receiving the job")
         break
     try:
