@@ -4,7 +4,7 @@ Build for Windows and Linux, for the 2DJumper OpenAI gym environment
 On Windows or Linux without docker
 Pull the repository, then in the Training folder, run master_server.py, and then run as many compute_slave_client.py as you want. This is set up to run locally, and to run at a simulation speed of 100, so you might not benefit from running multiple clients. For better effect use a real server to run the master_server.py on, and then connect to that server from different devices by running compute_slave_client.py on those compyters and modify the host and port in both files so they can be connected.
 
-Run using Docker (better guide coming soon...):\n
+Run using Docker (better guide coming soon...):<br />
 1)
 Pull docker container: docker pull henning998/client_env
 2)
