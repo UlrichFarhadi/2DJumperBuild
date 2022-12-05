@@ -13,7 +13,7 @@ import Jumper2Denv
 
 buffer_socket_size = 10048
 
-host = '127.0.0.1'
+host = 'host.docker.internal'  #'127.0.0.1'
 port = 1234
 
 ClientSocket = socket.socket()
