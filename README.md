@@ -16,8 +16,9 @@ Starting a docker container will start a compute_slave client<br />
 Notes:<br />
 - For larger pytorch neural network. Test using protobuf how many bytes the message is, and adjust the buffer_socket_size variable to be equal or higher than that number. Remember to change the variable in both compute_slave_client.py and master_server.py<br />
 - The client auto detects if you are using Windows or Linux or Docker, so all you have to do is run it. Just makae sure that you have the correct python libraries if you run the client outside Docker (install the requirements.txt file in the Training folder). NOTE: If you are running the client on Linux (outside Docker), mlagents is using pytorch, and it has to be version 1.81 (specified by mlagents), so you have to run Conda to get that exact version. Therefore it is advised to use Docker (or windows) when running the client
-- For GPU support on Windows:
-  - Docker has to be installed inside WSL
+- For GPU support:
+  - Requirements: Must have a 64bit operating system
+  - Docker has to be installed on Linux, if using Windows install it inside WSL and follow the rest of this guide inside WSL
   - NVIDIA Container Toolkit inside WSL
   - sudo apt-get install -y nvidia-docker2
   - Restart the Docker daemon
