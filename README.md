@@ -15,6 +15,7 @@ Starting a docker container will start a compute_slave client<br />
 
 Notes:<br />
 - For larger pytorch neural network. Test using protobuf how many bytes the message is, and adjust the buffer_socket_size variable to be equal or higher than that number. Remember to change the variable in both compute_slave_client.py and master_server.py<br />
+- The client auto detects if you are using Windows or Linux or Docker, so all you have to do is run it. Just makae sure that you have the correct python libraries if you run the client outside Docker, and make sure you have the correct python libraries downlaoded for the master to run (requirements text
 
 
 Demonstration video of how to run the setup locally<br />
