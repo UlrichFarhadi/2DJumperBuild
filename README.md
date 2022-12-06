@@ -17,6 +17,6 @@ Notes:<br />
 - For larger pytorch neural network. Test using protobuf how many bytes the message is, and adjust the buffer_socket_size variable to be equal or higher than that number. Remember to change the variable in both compute_slave_client.py and master_server.py<br />
 
 
-Demonstration video of how to run the setup locally
+Demonstration video of how to run the setup locally<br />
 https://user-images.githubusercontent.com/49520062/205865598-8452b39f-4169-43d9-8357-a83415dd7ff5.mp4
 
