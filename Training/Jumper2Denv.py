@@ -1,4 +1,5 @@
 from ensurepip import version
+import os
 from os import times
 
 import sys
@@ -6,12 +7,12 @@ import gym
 import time
 import numpy as np
 import torch
+from random import random
 
 import GA_evolver
 import platform
 
-# Create an instance from the class GA_evolver
-from random import random
+
 
 import mlagents
 from mlagents_envs.environment import ActionTuple, BaseEnv
@@ -22,12 +23,16 @@ def create_env(show_graphics=False, env_simulation_speed=1.0, docker = False):
     print("System detected: ", platform.system())
     print("Running using docker: ", docker)
 
+
     if (platform.system() == 'Linux'):
-        env_path = '2DJumperBuild/2DJumperBuildLinux/2DJumperBuildLinux.x86_64'
+        dirname = os.path.dirname(__file__)
+        env_path = os.path.join(dirname, '../2DJumperBuildLinux/2DJumperBuildLinux.x86_64')
     elif (platform.system() == 'Windows'):
-        env_path = '2DJumperBuild/2DJumperBuildWindows/3DJumper'
+        dirname = os.path.dirname(__file__)
+        env_path = os.path.join(dirname, '../2DJumperBuildWindows/3DJumper')
     if docker:
         env_path = '2DJumperBuild/2DJumperBuildLinux/2DJumperBuildLinux.x86_64'
+    print("environment path: ", env_path)
 
     channel = EngineConfigurationChannel()
     env = UE(file_name= env_path , seed=1, side_channels=[channel], no_graphics=not show_graphics)
