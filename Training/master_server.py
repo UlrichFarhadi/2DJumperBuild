@@ -123,7 +123,7 @@ def client_handler(connection):
                 #print(this_id, " Test: Job sent to compute slave")
             except:
                 #print(this_id, " Error: Failed to send compute job")
-                #client_disconnect(job)
+                client_disconnect(job)
                 break
             # Wait for answer back to receive the reward
             try: # Last Pass
@@ -138,6 +138,7 @@ def client_handler(connection):
                 reward = read_data.reward
                 if job[0] != job_idx:
                     print(this_id, " Error: Returned job index is not the same as the original job index")
+                    client_disconnect(job)
                     break
                 #print("Reward for agent = ", reward)
                 if AI_instance.completed_jobs == AI_instance.population_size:
@@ -145,14 +146,14 @@ def client_handler(connection):
                 AI_instance.add_finished_job(job_idx=job_idx, reward=reward)
             except:
                 print(this_id, " Error: Failed to receive reward")
-                #client_disconnect(job)
+                client_disconnect(job)
                 break
         if released == False:
             AI_instance.available_jobs_mutex.release()
         else:
             released = False
     
-    client_disconnect()
+    #client_disconnect()
     print(this_id, " Closing socket")
     connection.close()
 
