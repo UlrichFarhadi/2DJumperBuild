@@ -137,7 +137,8 @@ def client_handler(connection):
                 job_idx = read_data.agent_id
                 reward = read_data.reward
                 if job[0] != job_idx:
-                    print(this_id, " Error: Returned job index is not the same as the original job index")
+                    #print(this_id, " Error: Returned job index is not the same as the original job index")
+                    print("Error: Returned job index is not the same as the original job index")
                     client_disconnect(job)
                     break
                 #print("Reward for agent = ", reward)
@@ -145,7 +146,8 @@ def client_handler(connection):
                     AI_instance.operating = True
                 AI_instance.add_finished_job(job_idx=job_idx, reward=reward)
             except:
-                print(this_id, " Error: Failed to receive reward")
+                #print(this_id, " Error: Failed to receive reward")
+                print("Error: Failed to receive reward")
                 client_disconnect(job)
                 break
         if released == False:
@@ -154,7 +156,8 @@ def client_handler(connection):
             released = False
     
     #client_disconnect()
-    print(this_id, " Closing socket")
+    #print(this_id, " Closing socket")
+    print("Closing socket")
     connection.close()
 
 def accept_connections(ServerSocket):
