@@ -19,7 +19,7 @@ Notes:<br />
 - For GPU support:
   - Requirements: Must have a 64bit operating system
   - Docker has to be installed on Linux, if using Windows install it inside WSL and follow the rest of this guide inside WSL
-  - NVIDIA Container Toolkit inside WSL
+  - Install NVIDIA Container Toolkit inside WSL
   - sudo apt-get install -y nvidia-docker2
   - Restart the Docker daemon
   - When doing docker.run give it the flag: --gpus all
