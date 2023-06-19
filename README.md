@@ -28,7 +28,7 @@ Notes:<br />
 Demonstration video of how to run the setup locally:<br />
 https://user-images.githubusercontent.com/49520062/205865598-8452b39f-4169-43d9-8357-a83415dd7ff5.mp4
 
-Demonstation video of the agent acting in the environment. Note that the video might not appear so smooth, this because of the video capturing software used and not the environment itself:<br />
+Demonstation video of the agent acting in the environment. Note that the video might not appear so smooth, this is because of the video capturing software used (producing a low frame rate) and not the environment itself:<br />
 https://user-images.githubusercontent.com/49520062/207076486-bf709f74-c34e-4481-a3d7-2f738957878b.mp4
 
 Demonstration video of the agent trained by GA acting in the environment: <br />
